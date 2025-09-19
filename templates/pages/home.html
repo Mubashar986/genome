@@ -1,0 +1,11 @@
+{% extends "base.html"%}
+{% block content %}
+<p>thats a new thing we are working </p>
+<ul>
+{% for item in inventory_list %}
+<li>{{ item }}</li>
+{% endfor %}
+</ul>
+
+<h1>class based views</h1>
+{% endblock %}

@@ -1,15 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.http import HttpResponse
-
-
-
+from django.views.generic import TemplateView 
 
 def home_view_request(request):
-    return HttpResponse("hey I am doing django")
+    context = {
+        "inventory_list": ["vanity", "toxicty"],
+        "greetings": "vanity is my favourite sin",
+    }
+    return render(request, "pages/home.html", context)
 
-def other_veiw(request):
-    name=input("Enter ur name")
-    return HttpResponse(name)
-
-
+class about_page(TemplateView):
+    template_name="pages/about.html"
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context["number"]="3432"
+        context["name"]="mubashar"
+        return context       
 
